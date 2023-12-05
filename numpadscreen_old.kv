@@ -1,0 +1,169 @@
+## Numpad Screen
+<NumpadScreen>:
+	textinput: None ## set to Calculator Screen's current FloatInput
+
+	## mock-up
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			##source: "./images/numpad_mock-up.png"
+			source: "./images/bg.png"
+
+	## Screen Layout
+	GridLayout:
+		rows: 3
+		cols: 1
+		padding: 0, 320, 0, 0
+	
+		GridLayout:
+			rows: 2
+			cols: 1
+			row_force_default: True
+			row_default_height: sp(70)
+			padding: 40, 0, 0, 0
+			
+			## Input Identifier Label
+			FieldIDLabel:
+				text: "Enter a number"
+				text_size: self.size
+				font_size: '36sp'
+				color: (17 / 255, 32 / 255, 171 / 255, 1)
+				outline_color: (0, 0, 0, 1)
+				height: sp(60)
+				halign: 'left'
+				valign: 'top'
+				
+			FieldInput:
+				id: fieldinput
+				text: ""
+				size_hint: None, None
+				size: 530, 50
+				foreground_color: (154 / 255, 0, 0, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				valign: 'top'
+			
+		## number buttons
+		GridLayout:
+			row_force_default: True
+			row_default_height: sp(104)
+			cols: 3
+			padding: 20, -80, 20, 5
+			spacing: 5, 0
+			
+			## row 1: 1 - 2 - 3
+			Button: ## 1
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button1normal.png"
+				background_down: "./buttons/Button1pressed.png"
+				on_release: root.ids.fieldinput.insert_text('1')
+			Button: ## 2
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button2normal.png"
+				background_down: "./buttons/Button2pressed.png"
+				on_release: root.ids.fieldinput.insert_text('2')
+			Button: ## 3
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button3normal.png"
+				background_down: "./buttons/Button3pressed.png"
+				on_release: root.ids.fieldinput.insert_text('3')
+			## row 2: 4 - 5 - 6
+			Button: ## 4
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button4normal.png"
+				background_down: "./buttons/Button4pressed.png"
+				on_release: root.ids.fieldinput.insert_text('4')
+			Button: ## 5
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button5normal.png"
+				background_down: "./buttons/Button5pressed.png"
+				on_release: root.ids.fieldinput.insert_text('5')
+			Button: ## 6
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button6normal.png"
+				background_down: "./buttons/Button6pressed.png"
+				on_release: root.ids.fieldinput.insert_text('6')
+			## row 3: 7 - 8 - 9
+			Button: ## 7
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button7normal.png"
+				background_down: "./buttons/Button7pressed.png"
+				on_release: root.ids.fieldinput.insert_text('7')
+			Button: ## 8
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button8normal.png"
+				background_down: "./buttons/Button8pressed.png"
+				on_release: root.ids.fieldinput.insert_text('8')
+			Button: ## 9
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button9normal.png"
+				background_down: "./buttons/Button9pressed.png"
+				on_release: root.ids.fieldinput.insert_text('9')
+			## row 4: ,000 - 0 - .
+			Button: ## ,000
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/ButtonComma000normal.png"
+				background_down: "./buttons/ButtonComma000pressed.png"
+				on_release: root.ids.fieldinput.insert_text(',000')
+			Button: ## 0
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/Button0normal.png"
+				background_down: "./buttons/Button0pressed.png"
+				on_release: root.ids.fieldinput.insert_text('0')
+			Button: ## .
+				size_hint: None, None
+				size: 186, 104
+				background_normal: "./buttons/ButtonDOTnormal.png"
+				background_down: "./buttons/ButtonDOTpressed.png"
+				on_release: root.ids.fieldinput.insert_text('.')
+		## navigation row
+		GridLayout:
+			rows: 1
+			cols: 4
+			row_force_default: True
+			row_default_height: sp(104)
+			padding: 20, 115, 0, 0
+			spacing: 5, 0
+
+			Button: ## CLEAR
+				size_hint: None, None
+				size: 139, 104
+				background_normal: "./buttons/ButtonCLEARnormal.png"
+				background_down: "./buttons/ButtonCLEARpressed.png"
+			
+			Button: ## BACKSPACE
+				size_hint: None, None
+				size: 139, 104
+				background_normal: "./buttons/ButtonBACKSPACEnormal.png"
+				background_down: "./buttons/ButtonBACKSPACEpressed.png"
+			
+			Button: ## CANCEL
+				size_hint: None, None
+				size: 139, 104
+				background_normal: "./buttons/ButtonCANCELnormal.png"
+				background_down: "./buttons/ButtonCANCELpressed.png"
+			
+			Button: ## OK
+				size_hint: None, None
+				size: 139, 104
+				background_normal: "./buttons/ButtonOKnormal.png"
+				background_down: "./buttons/ButtonOKpressed.png"
+				on_press: root.manager.ids.calculator.update_current_input(root.textinput, root.ids.fieldinput.text)
+				on_press:
+					root.manager.transition.direction = 'right'
+					root.manager.current = 'calculator'
+					root.manager.get_screen("calculator")
+		

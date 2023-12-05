@@ -1,0 +1,23 @@
+## Canadian Mortgage Calculator
+## manager.kv
+
+#:include calculatorscreen.py
+#:include errorscreen.py
+#:include helpscreen.py
+#:include numpadscreen.py
+
+## id's must be here and not in the individual .kv layout files.
+## name properties are used by the ScreenManager.
+WindowManager:
+	CalculatorScreen:
+		id: calculator
+		name: 'calculator'
+	HelpScreen:
+		id: help
+		name: 'help'
+	NumPadScreen:
+		id: numpad
+		name: 'numpad'
+	ErrorScreen:
+		id: error
+		name: 'error'

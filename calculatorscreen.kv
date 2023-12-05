@@ -1,0 +1,213 @@
+## CalculatorScreen
+<CalculatorScreen>:
+	## mock-up
+	## The pos: property may not need to be set.
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "./images/bg.png"
+			##source: "./images/summary_mock-up.png"
+
+	## Screen Layout
+	GridLayout:
+		rows: 4
+		cols: 1
+		padding: 0, 240, 0, 200 # This corrects everything but the buttons (button was 0)
+
+		## INSTRUCTIONS LABEL
+		Label:
+			text: "Fill in the fields below, then use the Calc button"
+			text_size: self.size
+			font_size: '36sp'
+			color: (17 / 255, 32 / 255, 171 / 255, 1)
+			outline_color: (0, 0, 0, 1)
+			height: sp(160)
+			halign: 'left'
+			valign: 'middle'
+			padding: 35, 0
+
+		## INPUTS AND THEIR LABELS
+		GridLayout:
+			id: inputs
+			row_force_default: True
+			row_default_height: 36
+			cols: 2
+			padding: 20, 0, 20, 105
+			spacing: 10, 20
+
+			Label:
+				text: "Home Price:"
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			HomePriceInput:
+				id: home_price_input
+				text: ""
+				foreground_color: (154 / 255, 0, 0, 1)
+				background_color: (1, 246 / 255, 213 / 255, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				padding: 0, 0, 10, 0
+			Label:
+				text: "Down Payment:"
+				font_name: "MyriadPro-Regular.otf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			DownPaymentInput:
+				id: down_payment_input
+				text: ""
+				foreground_color: (154 / 255, 0, 0, 1)
+				background_color: (1, 246 / 255, 213 / 255, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				padding: 0, 0, 10, 0
+			Label:
+				text: "Mortgage Principal:"
+				font_name: "MyriadPro-Regular.otf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			MortgagePrincipalLabel:
+				id: mortgage_principal_label
+				text: ""
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				text_size: self.width, self.height
+				color: (154 / 255, 0, 0, 1)
+				font_name: "Arial.ttf"
+				halign: 'right'
+				padding: 10, 0
+				halign: 'right'
+				valign: 'bottom'
+			Label:
+				text: "Interest Rate:"
+				font_name: "MyriadPro-Regular.otf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			InterestRateInput:
+				id: interest_rate_input
+				text: ""
+				foreground_color: (154 / 255, 0, 0, 1)
+				background_color: (1, 246 / 255, 213 / 255, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				padding: 0, 0, 10, 0
+			Label:
+				text: "Mortgage Term:"
+				font_name: "MyriadPro-Regular.otf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			MortgageTermInput:
+				id: mortgage_term_input
+				text: ""
+				foreground_color: (154 / 255, 0, 0, 1)
+				background_color: (1, 246 / 255, 213 / 255, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				padding: 0, 0, 10, 0
+			Label:
+				text: "Amortization Period:"
+				font_name: "MyriadPro-Regular.otf"
+				font_size: '30sp'
+				color: (154 / 255, 0, 0, 1)
+				text_size: self.width, self.height
+				halign: 'right'
+				padding: 0, 0
+				valign: 'middle'
+			AmortizationPeriodInput:
+				id: amortization_period_input
+				text: ""
+				foreground_color: (154 / 255, 0, 0, 1)
+				background_color: (1, 246 / 255, 213 / 255, 1)
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				halign: 'right'
+				padding: 0, 0, 10, 0
+			# MONTHLY PAYMENT row
+			Label:
+				text: "Monthly Payment:"
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				text_size: self.width, self.height
+				color: (17 / 255, 32 / 255, 171 / 255, 1)
+				halign: 'right'
+				padding: 0, 0
+				valign: 'bottom'
+			MonthlyPaymentLabel:
+				id: monthly_payment_label
+				text: ""
+				font_name: "Arial.ttf"
+				font_size: '30sp'
+				text_size: self.width, self.height
+				color: (17 / 255, 32 / 255, 171 / 255, 1)
+				font_name: "Arial.ttf"
+				halign: 'right'
+				padding: 10, 0
+				halign: 'right'
+				valign: 'bottom'
+
+		## SPACER ROW to keep everything above from getting covered
+		#GridLayout:
+
+		## NAVIGATION ROW
+		GridLayout:
+			cols: 3
+			padding: 20, 230, 20, 30 # Adding 200 to the top fixed placement of buttons.
+
+			## ABOUT/HELP BUTTON
+			HelpButton:
+				##text: "ABOUT/HELP"
+				background_normal: "./buttons/ButtonABOUTnormal.png"
+				background_down: "./buttons/ButtonABOUTpressed.png"
+				size_hint: None, None
+				size: 186, 104
+				on_release:
+					app.root.current = "help"
+					root.manager.transition.direction = "left"
+			## RESET BUTTON
+			ResetButton:
+				##text: "RESET"
+				background_normal: "./buttons/ButtonRESETnormal.png"
+				background_down: "./buttons/ButtonRESETpressed.png"
+				size_hint: None, None
+				size: 186, 104
+				on_release:
+					root.ids.home_price_input.text = ''
+					root.ids.down_payment_input.text = ''
+					root.ids.mortgage_principal_label.text = ''
+					root.ids.interest_rate_input.text = ''
+					root.ids.mortgage_term_input.text = ''
+					root.ids.amortization_period_input.text = ''
+					root.ids.monthly_payment_label.text = ''
+
+			## CALCULATE BUTTON
+			CalculateButton:
+				##text: "CALCULATE"
+				background_normal: "./buttons/ButtonCALCnormal.png"
+				background_down: "./buttons/ButtonCALCpressed.png"
+				size_hint: None, None
+				size: 186, 104

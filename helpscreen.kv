@@ -1,0 +1,55 @@
+## Help Screen
+<HelpScreen>:
+	name: "help"
+
+	## mock-up
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			##source: "./images/help_mock-up.png"
+			source: "./images/bg.png"
+
+	BoxLayout:
+		orientation: 'vertical'
+		padding: 20, 240, 20, 0
+		
+		ScrollView:
+			do_scroll_y: True
+			do_scroll_x: False
+			size_hint: None, None
+			size: 550, 660
+			
+			Label:
+				markup: True
+				text: "[color=#9A0000][size=24][b]ABOUT[/b][/size][/color]\nThis is free software. Copyright © 2023 Ron Tarrant, all rights reserved.\n\n [color=#9A0000][size=24][b]HELP[/b][/size][/color]\n1) Touching any field activates the custom Keypad. Use the [i]Keypad[/i] to\nenter numbers.\n\n2) Keypad Operation is the same as a calculator.\nSelect [i]OK[/i] when done. \n\n    [b]CLEAR[/b] - Start over. \n    [b]BCKSP[/b] - (Backspace) Delete the last character. \n    [b]CAN[/b] - Cancel the operation and return to previous screen. \n    [b]OK[/b] - Yeah, you know what this means. \n\n3) When all amounts ([i]Home Price[/i], [i]Down Payment[/i], and [i]Interest Rate[/i]) are entered on the first screen ([i]Cost[/i]), select the [i]>[/i] (Next) button. \n\n4) In the second screen ([i]Mortgage[/i]) the first two fields will be filled in based on what you entered on the [i]Cost[/i] screen. \n\n5) Fill in the [i]Term[/i] and [i]Amortization Period[/i]. Select [i]>[/i] (Next) again to see results.\n\n[b][color=#9A0000]Home Price[/color][/b]: The full sticker price of the house. This is either the asking price or the offer you intend to make. \n\n[b][color=#9A0000]Interest Rate[/color][/b]: Quoted by the bank. \n\n[b][color=#9A0000]Down Payment[/color][/b]: The amount you pay up front. This is subtracted from [i]Home Price[/i] and what you're left with is the [i]Principal[/i]. \n\n[b][color=#9A0000]Principal[/color][/b]: This amount is what the lender will provide. \n\n[b][color=#9A0000]Mortgage Term[/color][/b]: This is most commonly either three or five years, but some lenders allow as little as six months or as much as ten years. \n\n[b][color=#9A0000]Amortization Period[/color][/b]: By law, this can be anywhere from six months to 35 years. Most borrowers are offered a 25-year mortgage. [i][color=#9A0000]High Ratio[/color][/i] mortgages (see below) are restricted to a 25-year maximum. Low ratio mortgages are legally allowed to be amortized over a period of up to 35 years in Canada, but most lenders don't offer more than 30 years. \n\n[b][color=#9A0000]High Ratio Mortgages[/color][/b] \nIf you have less that 20% to apply as a down payment, this is considered a high-ratio mortgage. This represents a higher risk to the lender. \nTo offset that risk, the Canadian Mortgage and Housing Corporation (CMHC) steps in to insure all high-ratio mortgages. This is also beneficial to the borrower when home prices are high as it allows buying more expensive homes with less money down. \nHowever, the borrower pays a premium for CMHC coverage. This premium is a percentage of the home cost and depends on the size of the down payment. \n[i]In the table below, the left column shows down payments as percentages of the home price; the right column shows CMHC coverage as percentages of the mortgage principal (home price minus down payment.)[/i]\n\nDown Payment    Premium\n5 - 9.99%              4%\n10 - 14.99%          3.1%\n15 - 19.99%          2.8%\n \n\n[b][color=#9A0000]Taxes on CMHC Premium[/color][/b] \nIn Ontario, Quebec, and Saskatchewan, you will also pay provincial sales tax on the CMHC premium. This cost cannot be included in the mortgage and must be paid as part of closing costs."
+				text_size: self.size
+				size_hint: None, None
+				size: 550, 1275
+				halign: 'left'
+				valign: 'top'
+				padding: 20, 20
+				color: 0, 0, 0, 1
+		GridLayout:
+			rows: 1
+			
+			
+			## SPACER for BUTTON
+			Label:
+				size_hint: None, None
+				size: 186, 104
+			## OKAY Button
+			Button:
+				background_normal: "./buttons/ButtonOKnormal.png"
+				background_down: "./buttons/ButtonOKpressed.png"
+				size_hint: None, None
+				size: 186, 104
+				on_release:
+					app.root.current = "calculator"
+					root.manager.transition.direction = "right"
+			## SPACER for BUTTON
+			Label:
+				size_hint: None, None
+				size: 186, 104
+
+

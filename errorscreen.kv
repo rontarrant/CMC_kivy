@@ -1,0 +1,58 @@
+# Error Screen
+
+# This layout's origin is in the bottom left. That's why
+# the padding for the Button row has 40 pixels on the bottom.
+<ErrorScreen>:
+	name: "error"
+
+	# mock-up
+	canvas.before:
+		Rectangle:
+			pos: self.pos
+			size: self.size
+			source: "./images/error_mock-up.png"
+			#source: "./images/bg.png"
+
+	BoxLayout:
+		orientation: 'vertical'
+		padding: 20, 340, 20, 0
+		
+		BoxLayout:
+			do_scroll_y: True
+			do_scroll_x: False
+			size_hint: None, None
+			size: 550, 640
+			
+			Label:
+				markup: True
+				text: "This is an error message."
+				text_size: self.size
+				size_hint: None, None
+				size: 550, 640
+				halign: 'left'
+				valign: 'top'
+				padding: 20, 20
+				color: 0, 0, 0, 1
+		
+		# Button Row
+		BoxLayout:
+			orientation: 'horizontal'
+			padding: 0, 0, 0, 40
+			
+			# SPACER for BUTTON
+			Label:
+				size_hint: None, None
+				size: 186, 104
+			# OKAY Button
+			Button:
+				background_normal: "./buttons/ButtonOKnormal.png"
+				background_down: "./buttons/ButtonOKpressed.png"
+				size_hint: None, None
+				size: 186, 104
+				on_release:
+					app.root.current = "calculator"
+					root.manager.transition.direction = "right"
+			# SPACER for BUTTON
+			Label:
+				size_hint: None, None
+				size: 186, 104
